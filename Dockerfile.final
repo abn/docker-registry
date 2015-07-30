@@ -1,0 +1,13 @@
+FROM scratch
+MAINTAINER Arun Neelicattu <arun.neelicattu@gmail.com>
+
+ADD ./bin/registry /registry
+ADD ./cmd/registry/config.yml /config.yml
+ADD var /var
+ADD tmp /tmp
+
+VOLUME ["/var/lib/registry"]
+EXPOSE 5000
+
+ENTRYPOINT ["/registry"]
+CMD ["/config.yml"]
